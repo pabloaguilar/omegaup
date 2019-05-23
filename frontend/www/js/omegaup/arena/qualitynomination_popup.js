@@ -36,6 +36,13 @@ OmegaUp.on('ready', function() {
                                    contents: JSON.stringify(contents),
                                  })
                 .fail(UI.apiError);
+
+            ga('send', {
+              hitType: 'event',
+              eventCategory: 'Quality',
+              eventAction: 'Submit-Rating',
+              eventLabel: qualityPayload.problem_alias
+            });
           },
           dismiss: function() {
             let contents = {};
@@ -48,6 +55,14 @@ OmegaUp.on('ready', function() {
                   UI.info(T.qualityNominationRateProblemDesc);
                 })
                 .fail(UI.apiError);
+          },
+          show: function() {
+            ga('send', {
+              hitType: 'event',
+              eventCategory: 'Quality',
+              eventAction: 'Request-Rating',
+              eventLabel: qualityPayload.problem_alias
+            });
           }
         }
       });

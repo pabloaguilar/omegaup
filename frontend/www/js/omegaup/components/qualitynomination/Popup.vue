@@ -174,6 +174,11 @@ export default {
       var self = this;
       setTimeout(function() { self.onHide(false) }, 1000);
     }
+  },
+  mounted: function() {
+    if (this.showForm) {
+      this.$nextTick(function() { this.$emit('show') });
+    }
   }
 };
 </script>
